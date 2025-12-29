@@ -4,8 +4,8 @@ import openai
 # --------------------
 # Add your keys here
 # --------------------
-DISCORD_TOKEN = "YOUR_DISCORD_BOT_TOKEN"
-OPENAI_API_KEY = "YOUR_OPENAI_API_KEY"
+DISCORD_TOKEN = os.environ['DISCORD_TOKEN']
+OPENAI_API_KEY = os.environ['OPENAI_API_KEY']
 
 openai.api_key = OPENAI_API_KEY
 
@@ -43,3 +43,4 @@ async def on_message(message):
 # Run the bot
 # --------------------
 client.run(DISCORD_TOKEN)
+
