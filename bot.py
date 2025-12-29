@@ -1,5 +1,6 @@
 import discord
 import openai
+import os
 
 # --------------------
 # Add your keys here
@@ -43,4 +44,5 @@ async def on_message(message):
 # Run the bot
 # --------------------
 client.run(DISCORD_TOKEN)
+
 
