@@ -4,7 +4,7 @@ import openai
 # --------------------
 # Add your keys here
 # --------------------
-DISCORD_TOKEN = "MTQ1NTI5MzEyODg3Njc1MjkxNg.G8sI-H.WhqTWHrSlQEehBL0rzYuFmFjyP8jhy_mW906Wg"
+DISCORD_TOKEN = "MTQ1NTI5MzEyODg3Njc1MjkxNg.Gv8tmd.2QbqKtOD8jrK6E6eOTDXmM35tGiB8pKOC79EuA"
 OPENAI_API_KEY = "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"
 
 openai.api_key = OPENAI_API_KEY
@@ -44,3 +44,4 @@ async def on_message(message):
 # --------------------
 
 client.run(DISCORD_TOKEN)
+
