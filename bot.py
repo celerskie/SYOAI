@@ -3,11 +3,9 @@ import discord
 from discord import app_commands
 from openai import OpenAI
 
-# Environment variables
 DISCORD_TOKEN = os.environ["DISCORD_TOKEN"]
 OPENAI_API_KEY = os.environ["OPENAI_API_KEY"]
 
-# OpenAI client
 client_ai = OpenAI(api_key=OPENAI_API_KEY)
 
 class MyClient(discord.Client):
