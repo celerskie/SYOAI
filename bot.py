@@ -11,8 +11,8 @@ GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 # Configure Google Gemini
 genai.configure(api_key=GEMINI_API_KEY)
 
-# Use the "Flash" model (Fastest and Free-tier eligible)
-model = genai.GenerativeModel('gemini-1.5-flash')
+# Use "gemini-pro" (The most stable model to fix the 404 error)
+model = genai.GenerativeModel('gemini-pro')
 
 class MyClient(discord.Client):
     def __init__(self):
@@ -45,7 +45,7 @@ async def send_long_message(interaction, content):
 @client.tree.command(name="ask", description="Ask the AI a question")
 @app_commands.describe(question="Your question for the AI")
 async def ask(interaction: discord.Interaction, question: str):
-    # Defer the response so Discord knows we are thinking (prevents "Unknown Interaction" errors)
+    # Defer the response so Discord knows we are thinking
     await interaction.response.defer(thinking=True)
 
     try:
