@@ -4,16 +4,11 @@ from discord import app_commands
 from openai import OpenAI
 import keep_alive 
 
-# --- HARDCODE MODE (FOR DEBUGGING) ---
-# Replace the text inside the quotes with your real, long Discord Token.
-# keep the quote marks "" around it!
-DISCORD_TOKEN = "MTQ1NTI5MzEyODg3Njc1MjkxNg.GBTk3f.18G35TL_wACOujDDMD3DSM9maIecGKlPq9dXqk"
-
-# We can keep OpenAI as an environment variable (since that part wasn't failing)
-# If this also fails later, we can hardcode it too.
+# --- SAFE MODE ---
+# We use the Environment Variable so Discord doesn't kill the token
+DISCORD_TOKEN = os.environ.get("DISCORD_TOKEN")
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
 
-# Initialize OpenAI
 client_ai = OpenAI(api_key=OPENAI_API_KEY)
 
 class MyClient(discord.Client):
@@ -31,8 +26,7 @@ client = MyClient()
 
 @client.event
 async def on_ready():
-    print(f"Logged in as {client.user} (ID: {client.user.id})")
-    print("------")
+    print(f"Logged in as {client.user}")
 
 # Helper to handle long messages
 async def send_long_message(interaction, content):
@@ -59,8 +53,5 @@ async def ask(interaction: discord.Interaction, question: str):
     except Exception as e:
         await interaction.followup.send(f"Error: {e}")
 
-# Start the Web Server
 keep_alive.keep_alive()
-
-# Run the Bot
 client.run(DISCORD_TOKEN)
