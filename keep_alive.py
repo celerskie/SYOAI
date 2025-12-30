@@ -1,4 +1,4 @@
-rom flask import Flask
+from flask import Flask
 from threading import Thread
 import os
 
@@ -15,4 +15,5 @@ def run():
 
 def keep_alive():
     t = Thread(target=run)
+
     t.start()
