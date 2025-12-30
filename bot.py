@@ -49,7 +49,8 @@ async def ask(interaction: discord.Interaction, question: str):
 
     try:
         # Generate response using Gemini
-        response = model.generate_content(question)
+        response = await
+        model.generate_content_async(question)
         
         # Check if the response was blocked by safety filters
         if hasattr(response, 'text'):
@@ -67,3 +68,4 @@ keep_alive.keep_alive()
 
 # Run the bot
 client.run(DISCORD_TOKEN)
+
