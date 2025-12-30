@@ -44,7 +44,7 @@ async def ask(interaction: discord.Interaction, question: str):
 
     try:
         response = client_ai.chat.completions.create(
-            model="gpt-4-turbo",
+            model="gpt-3.5-turbo",
             messages=[{"role": "user", "content": question}]
         )
         reply = response.choices[0].message.content
@@ -55,3 +55,4 @@ async def ask(interaction: discord.Interaction, question: str):
 
 keep_alive.keep_alive()
 client.run(DISCORD_TOKEN)
+
