@@ -45,12 +45,12 @@ async def send_long_message(interaction, content):
 @client.tree.command(name="ask", description="Ask the AI a question")
 @app_commands.describe(question="Your question for the AI")
 async def ask(interaction: discord.Interaction, question: str):
+    # Defer the response so Discord knows we are thinking (prevents "Unknown Interaction" errors)
     await interaction.response.defer(thinking=True)
 
     try:
-        # Generate response using Gemini
-        response = await
-        model.generate_content_async(question)
+        # Generate response using Gemini (Async version to prevent blocking)
+        response = await model.generate_content_async(question)
         
         # Check if the response was blocked by safety filters
         if hasattr(response, 'text'):
@@ -68,4 +68,3 @@ keep_alive.keep_alive()
 
 # Run the bot
 client.run(DISCORD_TOKEN)
-
